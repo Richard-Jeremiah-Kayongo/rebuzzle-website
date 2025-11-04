@@ -1,29 +1,27 @@
 // ============================================
 // HAMBURGER MENU FUNCTIONALITY
 // ============================================
-
 const hamburger = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile-menu');
 
-// Toggle mobile menu when hamburger is clicked
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-});
-
-// Close mobile menu when a link is clicked
-const mobileLinks = document.querySelectorAll('.mobile-menu a');
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
+if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
     });
-});
+
+    const mobileLinks = document.querySelectorAll('.mobile-menu a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+    });
+}
 
 // ============================================
 // FADE-IN ON SCROLL ANIMATIONS
 // ============================================
-
 const sections = document.querySelectorAll('section');
 
 const options = {
@@ -69,17 +67,17 @@ function setCarouselImagesWithoutAnimation() {
             imgElement.style.transition = 'none';
             imgElement.src = slides[slideIndex];
             imgElement.className = `carousel-image ${positions[i]}`;
-            imgElement.offsetHeight; // Force reflow
+            void imgElement.offsetHeight; // Force reflow
             imgElement.style.transition = '';
         }
     }
 }
 
+// GLOBAL function for onclick handlers
 function changeSlide(direction) {
     if (isAnimating) return;
     isAnimating = true;
     
-    // Shift positions for animation
     const images = document.querySelectorAll('.carousel-image');
     images.forEach((img) => {
         const currentPos = img.className.split(' ')[1];
@@ -89,7 +87,6 @@ function changeSlide(direction) {
         img.className = `carousel-image ${positions[newIndex]}`;
     });
     
-    // After animation, update the slide index and reset images
     setTimeout(() => {
         currentSlide = (currentSlide - direction + slides.length) % slides.length;
         setCarouselImagesWithoutAnimation();
@@ -97,23 +94,21 @@ function changeSlide(direction) {
     }, 1000);
 }
 
-// Initialize carousel on load
-window.addEventListener('DOMContentLoaded', () => {
-    setCarouselImagesWithoutAnimation();
-});
+// Make changeSlide available globally
+window.changeSlide = changeSlide;
 
 // ============================================
 // MISSION TEXT TYPING ANIMATION
 // ============================================
 const missionFullText = "Our mission is to challenge minds and spark creativity, helping players of all ages discover the joy of solving puzzles while building sharper thinking skills.";
-const words = missionFullText.split(' ');
-let wordIndex = 0;
 
 function typeMissionText() {
     const missionElement = document.getElementById('mission-text');
     if (!missionElement) return;
     
-    const interval = 2000 / words.length; // Total 3 seconds divided by number of words
+    const words = missionFullText.split(' ');
+    let wordIndex = 0;
+    const interval = 2000 / words.length;
     
     const typingInterval = setInterval(() => {
         if (wordIndex < words.length) {
@@ -125,7 +120,6 @@ function typeMissionText() {
     }, interval);
 }
 
-// Start typing when mission section comes into view
 const missionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -139,25 +133,24 @@ const missionSection = document.querySelector('.mission-section');
 if (missionSection) {
     missionObserver.observe(missionSection);
 }
+
 // ============================================
 // FEATURES CAROUSEL FUNCTIONALITY
 // ============================================
 let currentFeatureSlide = 0;
-const featureCards = document.querySelectorAll('.feature-card');
-const dots = document.querySelectorAll('.dot');
 
 function showFeatureSlide(index) {
-    // Hide all cards
+    const featureCards = document.querySelectorAll('.feature-card');
+    const dots = document.querySelectorAll('.dot');
+    
     featureCards.forEach(card => {
         card.classList.remove('active');
     });
     
-    // Remove active from all dots
     dots.forEach(dot => {
         dot.classList.remove('active');
     });
     
-    // Show current card and activate dot
     if (featureCards[index]) {
         featureCards[index].classList.add('active');
     }
@@ -166,10 +159,11 @@ function showFeatureSlide(index) {
     }
 }
 
+// GLOBAL function for onclick handlers
 function changeFeatureSlide(direction) {
+    const featureCards = document.querySelectorAll('.feature-card');
     currentFeatureSlide += direction;
     
-    // Loop around
     if (currentFeatureSlide >= featureCards.length) {
         currentFeatureSlide = 0;
     }
@@ -180,31 +174,28 @@ function changeFeatureSlide(direction) {
     showFeatureSlide(currentFeatureSlide);
 }
 
+// GLOBAL function for onclick handlers
 function goToFeatureSlide(index) {
     currentFeatureSlide = index;
     showFeatureSlide(currentFeatureSlide);
 }
 
-// Initialize first slide
-window.addEventListener('DOMContentLoaded', () => {
-    if (featureCards.length > 0) {
-        showFeatureSlide(0);
-    }
-});
+// Make functions available globally
+window.changeFeatureSlide = changeFeatureSlide;
+window.goToFeatureSlide = goToFeatureSlide;
+
 // ============================================
-// TESTIMONIALS SCROLL FUNCTIONALITY
+// TESTIMONIALS AUTO-SCROLL
 // ============================================
-// Auto-scroll testimonials on mobile
 let testimonialAutoScroll;
-function startTestimonialAutoScroll() 
-{
+
+function startTestimonialAutoScroll() {
     if (window.innerWidth <= 768) {
         testimonialAutoScroll = setInterval(() => {
             const grid = document.getElementById('testimonial-grid');
             if (grid) {
                 const maxScroll = grid.scrollWidth - grid.clientWidth;
                 
-                // Check if at the end
                 if (grid.scrollLeft >= maxScroll - 10) {
                     grid.scrollTo({ left: 0, behavior: 'smooth' });
                 } else {
@@ -215,7 +206,6 @@ function startTestimonialAutoScroll()
     }
 }
 
-// Stop auto-scroll when user manually scrolls
 const testimonialGrid = document.getElementById('testimonial-grid');
 if (testimonialGrid) {
     testimonialGrid.addEventListener('touchstart', () => {
@@ -223,7 +213,23 @@ if (testimonialGrid) {
     });
 }
 
-window.addEventListener('DOMContentLoaded', startTestimonialAutoScroll);
+// ============================================
+// INITIALIZE ON PAGE LOAD
+// ============================================
+window.addEventListener('DOMContentLoaded', () => {
+    // Initialize carousel
+    setCarouselImagesWithoutAnimation();
+    
+    // Initialize features carousel
+    const featureCards = document.querySelectorAll('.feature-card');
+    if (featureCards.length > 0) {
+        showFeatureSlide(0);
+    }
+    
+    // Start testimonial auto-scroll
+    startTestimonialAutoScroll();
+});
+
 window.addEventListener('resize', () => {
     clearInterval(testimonialAutoScroll);
     startTestimonialAutoScroll();
