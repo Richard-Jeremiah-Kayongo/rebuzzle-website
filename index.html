@@ -3,10 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rebuzzle - Puzzle Game</title>
+    <title>Rebuzzle - The Ultimate Visual Word Puzzle Game</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to Rebuzzle! 🧩</h1>
-    <p>This is a test page. We'll make it beautiful soon!</p>
-</body>
-</html>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html#hero" class="nav-logo">
+                <img src="images/Rebuzzlelogo.png" alt="Rebuzzle">
+            </a>
+            <div class="nav-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+    </div>
+
+   <!-- Hero Section -->
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <h1>Rebuzzle</h1>
+        <p class="hero-subtitle">Challenge your brain with clever visual word puzzles that make you think outside the box.</p>
+        <div class="download-buttons">
+            <a href="#">
+                <img src="images/Appstore.png" alt="Download on App Store">
+            </a>
+            <a href="#">
+                <img src="images/Google.png" alt="Get it on Google Play">
+            </a>
+        </div>
+        
+       <!-- Carousel Section -->
+        <div class="carousel-container">
+            <button class="carousel-arrow left-arrow" onclick="changeSlide(1)">❮</button>
+            
+            <div class="carousel-track">
+                <img id="carousel-img-0" class="carousel-image far-left" src="images/splashscreen.png" alt="Screenshot">
+                <img id="carousel-img-1" class="carousel-image left" src="images/homepage.png" alt="Screenshot">
+                <img id="carousel-img-2" class="carousel-image center" src="images/gamescreen.png" alt="Screenshot">
+                <img id="carousel-img-3" class="carousel-image right" src="images/rotated.png" alt="Screenshot">
+                <img id="carousel-img-4" class="carousel-image far-right" src="images/shop.png" alt="Screenshot">
+            </div>
+            
+            <button class="carousel-arrow right-arrow" onclick="changeSlide(-1)">❯</button>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="mission-section">
+    <div class="container">
+        <div class="mission-header">Our Mission</div>
+        <p class="mission-text" id="mission-text"></p>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works">
+    <div class="container">
+        <div class="how-header">How It Works</div>
+        <p class="how-text">Pick a puzzle, decode the clues, and train your mind with every solution</p>
+        
+        <!-- Features Carousel -->
+        <div class="features-carousel-wrapper">
+            <button class="features-arrow features-prev" onclick="changeFeatureSlide(-1)">❮</button>
+            
+            <div class="features-carousel">
+                <!-- Slide 1 -->
+                <div class="feature-card active">
+                    <h3>Start Your Journey</h3>
+                    <p>Jump in with Play mode, challenge friends in Party mode, visit the Shop, or adjust Settings.</p>
+                    <img src="images/homepage.png" alt="Homepage">
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="feature-card">
+                    <h3>Track Your Progress</h3>
+                    <p>Choose your next puzzle and watch your skills grow as you unlock new challenges.</p>
+                    <img src="images/levels.png" alt="Levels">
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="feature-card">
+                    <h3>Solve The Puzzle</h3>
+                    <p>Decode the visual clue, type your answer, and crack the code to solve each rebuzzle.</p>
+                    <img src="images/gamescreen.png" alt="Game Screen">
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="feature-card">
+                    <h3>Play With Friends</h3>
+                    <p>Flip your phone sideways and compete with friends to see who solves puzzles fastest.</p>
+                    <img src="images/rotated.png" alt="Party Mode">
+                </div>
+                
+                <!-- Slide 5 -->
+                <div class="feature-card">
+                    <h3>Power Up</h3>
+                    <p>Get hints when stuck, unlock puzzle packs, or remove ads for uninterrupted play.</p>
+                    <img src="images/shop.png" alt="Shop">
+                </div>
+            </div>
+            
+            <button class="features-arrow features-next" onclick="changeFeatureSlide(1)">❯</button>
+        </div>
+        
+        <!-- Dots Navigation -->
+        <div class="dots-container">
+            <span class="dot active" onclick="goToFeatureSlide(0)"></span>
+            <span class="dot" onclick="goToFeatureSlide(1)"></span>
+            <span class="dot" onclick="goToFeatureSlide(2)"></span>
+            <span class="dot" onclick="goToFeatureSlide(3)"></span>
+            <span class="dot" onclick="goToFeatureSlide(4)"></span>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <div class="testimonials-header">Testimonials</div>
+        <p class="testimonials-subtitle">Trusted by 10,000+ members all over the world</p>
+        
+        <div class="testimonials-wrapper">           
+            <div class="testimonial-grid" id="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"I've played tons of puzzle games, but Rebuzzle is different. It actually makes me think creatively instead of just matching colors. The visual wordplay keeps my brain sharp and entertained at the same time."</p>
+                    <p class="testimonial-name">Richard Jeremiah</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Rebuzzle has become my go-to brain workout. The puzzles range from easy to mind-bending, and I appreciate how it exercises both my vocabulary and visual thinking skills. Definitely worth downloading."</p>
+                    <p class="testimonial-name">Elsie Melo</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"What I love most is how creative the puzzles are. You never know what to expect - pictures, wordplay, positions - everything matters. It's like a daily mental gym session that's actually fun."</p>
+                    <p class="testimonial-name">David Drew</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"I started playing to kill time, but now I'm hooked. The way puzzles combine images and words is so clever. It's helped me think more laterally, and I find myself spotting patterns everywhere now."</p>
+                    <p class="testimonial-name">Luke Godwin</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Finally, a puzzle game that challenges my mind without feeling like work. The hints are helpful when I'm stuck, and solving each rebus gives me such a satisfying feeling. Great for all ages too."</p>
+                    <p class="testimonial-name">Toni Järvinen</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Rebuzzle is perfect for quick breaks or long sessions. I love that I can play offline, and the variety keeps it fresh. Some puzzles make me laugh at how clever they are once I figure them out."</p>
+                    <p class="testimonial-name">Casie Stevens</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download Section -->
+<section class="download-section">
+    <div class="download-content">
+        <div class="download-left">
+            <h2 class="download-title">DOWNLOAD THE APP</h2>
+            <p class="download-subtitle">Train your brain, and unlock your sharpest thinking yet.</p>
+            <div class="download-buttons-left">
+                <a href="#">
+                    <img src="images/Appstore.png" alt="Download on App Store">
+                </a>
+                <a href="#">
+                    <img src="images/Google.png" alt="Get it on Google Play">
+                </a>
+            </div>
+        </div>
+        <div class="download-right">
+            <img src="images/homepage.png" alt="Rebuzzle App" class="download-screenshot">
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <h2 class="footer-title">Solve Your Way</h2>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="TikTok">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+            </a>
+        </div>
+        <p class="footer-copyright">&copy; 2025 Rebuzzle by KRJ Dev. All rights reserved.</p>
+    </div>
+</footer>
