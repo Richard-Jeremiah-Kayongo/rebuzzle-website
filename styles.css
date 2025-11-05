@@ -309,32 +309,41 @@ section {
 /* ============================================
    BUTTONS
    ============================================ */
-.btn {
+ .btn {
     display: inline-block;
-    background-color: #FF8200;
-    color: white;
+    background-color: #000;
+    color: #fff;
     padding: 18px 50px;
     text-decoration: none;
     border-radius: 50px;
     font-size: 1.3rem;
     font-weight: bold;
     margin: 20px 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(255, 130, 0, 0.3);
+    transition: none;
+    box-shadow: none;
     border: none;
     cursor: pointer;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(255, 130, 0, 0.4);
-    background-color: #ff9524;
+    background-color: #000;
+    color: #fff;
+    transform: none;
+    box-shadow: none;
+    text-decoration: none;
 }
 
 .btn:active {
-    transform: translateY(-1px);
+    transform: none;
+}
+/* Legal Page Button Fix - Force White Text */
+.legal-page .btn {
+    color: #fff !important;
 }
 
+.legal-page .btn:hover {
+    color: #fff !important;
+}
 /* Download Store Buttons */
 .download-buttons {
     display: flex;
@@ -891,6 +900,22 @@ footer {
     font-size: 0.85rem;
     color: white;
     margin-top: 20px;
+}
+.footer-email {
+    margin: 15px 0;
+}
+
+.footer-email a {
+    color: #FF8200;
+    text-decoration: none;
+    font-family: 'Itim', sans-serif;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-email a:hover {
+    color: #ff9524;
+    text-decoration: underline;
 }
 
 /* ============================================
